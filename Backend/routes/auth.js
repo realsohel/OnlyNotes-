@@ -1,3 +1,4 @@
+// Imports of all exertnal files
 const express = require('express');
 const router = express.Router();
 
@@ -7,6 +8,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const fetchuser = require("../middleware/fetchuser");
 const JWT_SECRET = "sohel@230$70";
+
+// till here import......
 
 
 // Route 1: Craete User using POST without login.. /api/auth/createuser , No Login Required
@@ -43,7 +46,7 @@ router.post('/createuser' ,[
             id: user.id
         }
     }
-    const authtoken = jwt.sign(data , JWT_SECRET);
+    const authtoken = jwt.sign(data , JWT_SECRET); // web jwt.io
     console.log(authtoken)
     res.json({authtoken});
     // console.log(user);
@@ -104,7 +107,7 @@ router.post('/login' ,[
 
 
 
-//Route 3: Get user Data using POST .. /api/auth/getuser.  Login Required
+//Route 3: Get the logged in user Data using POST .. /api/auth/getuser.  Login Required
 router.post('/getuser' ,fetchuser, async (req,res)=>{
 
     try {

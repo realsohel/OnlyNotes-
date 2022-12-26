@@ -1,6 +1,12 @@
 const mongoose = require("mongoose")
+const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
+
+    user:{ // It will work as a foreign key which is fetched from User id... 
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"user"
+    },
 
     title: {
         type: String,
@@ -9,8 +15,7 @@ const NotesSchema = new Schema({
 
     description: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
 
     tag: {
