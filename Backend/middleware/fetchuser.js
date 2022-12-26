@@ -5,7 +5,7 @@ const fetchuser = (req , res, next)=>{ // as middleware takes 3 parameters
     const token = req.header("auth-token"); // taking the auth-token from logged in user and checking it on getuser API
     
     if(!token){ // to check if auth-token is proper or not.
-        res.status(401).send({error:"Access Denied, verify with the valid credentials"});
+        return res.status(401).send({error:"Access Denied, verify with the valid credentials"});
     }
 
     try {

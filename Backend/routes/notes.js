@@ -92,6 +92,7 @@ router.put('/updatenote/:id' ,fetchuser, async (req,res)=>{
 })
 
 
+
 // 3. DELETE NOTE 
 
 // Route 4: DELETE an existing  note of the logged in User using PUT .. /api/notes/deletenote:id . Login required 

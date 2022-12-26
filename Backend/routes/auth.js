@@ -82,6 +82,7 @@ router.post('/login' ,[
 
         // compare entered password  with hash password
         const PasswordCompare = await bcrypt.compare(password , user.password); 
+        
 
         if(!PasswordCompare){
             return res.status(400).json({error: "Login with proper credientials."});
@@ -118,6 +119,45 @@ router.post('/getuser' ,fetchuser, async (req,res)=>{
     catch(error){
         console.error(error.message);
         res.status(500).send("Internal server error");
+    }
+})
+
+
+
+
+//Route 3: Delete the user  using DELETE .. /api/auth/deletetuser/:email.  Login Required
+
+router.delete('/deleteuser/:email' ,fetchuser,[
+    body('email', "Enter a valid email").exists(),
+    body('password', "Password cannnot be remain empty").exists()
+], async (req,res)=>{
+
+    const{email } = req.params;
+
+    try {
+        let user = await User.findOne({email:email}); // check if entered email wala user exist or not 
+        console.log(email);
+        if(!user){
+            return res.status(400).json({error: "Not exist."});
+        }
+
+        // compare entered password  with hash password
+
+        // const PasswordCompare = await bcrypt.compare(password , user.password); 
+        // console.log(password);
+        // console.log(user.password);
+
+        // if(!PasswordCompare){
+        //     return res.status(400).json({error: "Enternn a valid password."});
+        // }
+
+        user = await User.findOneAndDelete({email:email});
+        res.json({Sucess: "Deleted Successfully" , user: user });
+        console.log("donen");
+    }
+    catch(error){
+        console.error(error.message);
+        res.status(500).send( "Internal server error");
     }
 })
 
