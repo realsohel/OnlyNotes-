@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/' , (req,res)=>{
     obj = {
-        a: "sohel",
+        a: "nand",
         num: 90
     };
 
