@@ -1,12 +1,12 @@
 
 import Notes from './Notes';
 
-const Home = () => {
+const Home = (props) => {
     return (
     <>  
         
-        <Notes/>
-        
+        <Notes mode={props.mode} text={props.text}/>
+
     </>
     )
 }
