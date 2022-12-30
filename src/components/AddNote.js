@@ -28,11 +28,11 @@ const AddNote = (props) => {
                     <label htmlFor="description" className="form-label" ><b>Description</b></label>
                     <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="description" name="description" onChange={onChange} />
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                <div className="mb-3">
+                    <label htmlFor="tag" className="form-label" ><b>Tag</b></label>
+                    <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="tag" name="tag" onChange={onChange} />
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={Addnotebtn}>Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={Addnotebtn}>Add Note</button>
             </form>
             </div>
         </div>

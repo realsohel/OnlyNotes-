@@ -104,7 +104,7 @@ router.delete('/deletenote/:id' ,fetchuser, async (req,res)=>{
     //Find the note to be Deleted and Delete it.
     let note = await Notes.findById(req.params.id);
     if(!note){ // to check if note belong to that user only.
-        return res.status(404).send("Not found");
+        return res.status(404).send("Note does nt exist");
     }
     
     // Allow the deletion only if user own this note
