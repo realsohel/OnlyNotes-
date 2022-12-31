@@ -20,14 +20,17 @@ const Notes = (props) => {
         const updateNote = (currentNote)=>{
             ref.current.click();
             setNote({ id:currentNote._id, etitle: currentNote.title ,edescription: currentNote.description , etag : currentNote.tag });
-            console.log({etitle: currentNote.title ,edescription: currentNote.description , etag : currentNote.tag })
+            
+            // console.log({etitle: currentNote.title ,edescription: currentNote.description , etag : currentNote.tag })
         }
 
         const Addnotebtn = (e)=>{ //submit btn
 
             e.preventDefault();
             editNote(note.id , note.etitle , note.edescription , note.etag);
+            props.showAlert("Note updated  Successfully." , "success:");
             refClose.current.click()
+            
     }
 
         const onChange = (e)=>{
@@ -36,7 +39,7 @@ const Notes = (props) => {
         }
     return (
         <>
-        <AddNote mode={props.mode} text={props.text}/>
+        <AddNote mode={props.mode} text={props.text} showAlert={props.showAlert}/> 
         <hr className={` text-${props.text}`}/>
 
         
@@ -86,7 +89,7 @@ const Notes = (props) => {
                 <h2>{notes.length===0 && "No notes!  Your Notes will be displayed here! "}</h2>
             </div>
             {notes.map((note)=>{   // maping 
-                return <NoteItem  key={note._id}note={note} updateNote={updateNote} mode={props.mode} text={props.text} />; 
+                return <NoteItem  key={note._id}note={note} updateNote={updateNote} mode={props.mode} text={props.text} showAlert={props.showAlert} />; 
 
             })}
         </div>
