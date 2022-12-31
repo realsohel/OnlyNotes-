@@ -4,11 +4,12 @@ import notecontext from '../context/notes/notecontext'
 const AddNote = (props) => {
     const context = useContext(notecontext); // using context
     const{addNote} = context; // detruxting notes = notes(from note.js) & setnote = setnote(from note.js)
-    const[note , setNote] = useState({title: "", description: "", tag:"none"})
+    const[note , setNote] = useState({title: "", description: "", tag:""})
 
     const Addnotebtn = (e)=>{ //submit btn
             e.preventDefault();
             addNote(note.title , note.description , note.tag);
+            setNote({title: "", description: "", tag:""});
     }
 
     const onChange = (e)=>{
@@ -21,18 +22,19 @@ const AddNote = (props) => {
             <form>
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label" ><b> Title</b></label>
-                    <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="title" name="title" onChange={onChange} aria-describedby="emailHelp" />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                    <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="title" name="title"  value={note.title} onChange={onChange} aria-describedby="emailHelp" />
+                    <div  className="form-text">Min 3 characters</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label" ><b>Description</b></label>
-                    <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="description" name="description" onChange={onChange} />
+                    <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="description" name="description" value={note.description} onChange={onChange} />
+                    <div  className="form-text">Min 4 characters</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="tag" className="form-label" ><b>Tag</b></label>
-                    <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="tag" name="tag" onChange={onChange} />
+                    <input type="text" className={`form-control text-${props.text} bg-${props.mode}`} id="tag" name="tag" value={note.tag} onChange={onChange} />
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={Addnotebtn}>Add Note</button>
+                <button disabled={( note.title.length< 3) || (note.description.length<4 )} type="submit" className="btn btn-primary" onClick={Addnotebtn}>Add Note</button>
             </form>
             </div>
         </div>

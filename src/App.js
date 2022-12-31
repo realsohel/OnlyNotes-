@@ -9,6 +9,8 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import NoteState from './context/notes/NoteState';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 // import Alert from './components/Alert';
 
 function App() {
@@ -22,13 +24,13 @@ function App() {
         setmode('dark');
         settextmode('light');
         document.body.style.backgroundColor='#171717';
-        console.log(mode);
+        // console.log(mode);
       }
       else{
           setmode('light');
           settextmode('dark');
           document.body.style.backgroundColor='white';
-          console.log(mode);
+          // console.log(mode);
         }
     }
   return (
@@ -42,6 +44,8 @@ function App() {
       <Routes>
         <Route  exact path = "/home" element={<Home mode={mode} text={textmode}/>}/> 
         <Route  exact path = "/about" element={<About/>}/> 
+        <Route  exact path = "/login" element={<Login />}/> 
+        <Route  exact path = "/signup" element={<SignUp/>}/> 
       </Routes>
       </div>
 
