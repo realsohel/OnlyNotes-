@@ -1,5 +1,5 @@
 import React ,{useEffect} from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const Navbar = (props) => {
 
@@ -7,6 +7,12 @@ const Navbar = (props) => {
     useEffect(() => {
         // console.log(location.pathname);
     }, [location]);
+
+    let history = useNavigate();
+    const handleLogout=()=>{
+        localStorage.removeItem('token');
+        history('/login');
+    }
 
     return (
         <>
@@ -30,10 +36,10 @@ const Navbar = (props) => {
                         <label className={`form-check-label text-${props.text}`} htmlFor="flexSwitchCheckDefault">Dark-mode</label>
                     </div> 
 
-                    <form className="d-flex" role="search">
+                    {!localStorage.getItem('token') ?<form className="d-flex" role="search">
                         <Link className="btn btn-primary mx-2" type="submit" to="/login">Login</Link>
                         <Link className="btn btn-primary" type="submit" to="/signup">SignUp</Link>
-                    </form>
+                    </form>: <button className="btn btn-primary mx-2" onClick={handleLogout}>Logout</button> }
                     
                 </div>
             </div>

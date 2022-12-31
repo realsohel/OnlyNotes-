@@ -9,7 +9,7 @@ const AddNote = (props) => {
     const Addnotebtn = (e)=>{ //submit btn
             e.preventDefault();
             addNote(note.title , note.description , note.tag);
-            props.showAlert("Note updated  Successfully." , "success:");
+            props.showAlert("Note Added  Successfully." , "success");
             setNote({title: "", description: "", tag:""});
     }
 

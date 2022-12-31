@@ -16,7 +16,7 @@ const NoteState = (props)=>{
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhYzU1NGQxZTAyNTljZTE1ODcwMzc1In0sImlhdCI6MTY3MjIzODQxM30.-0gG-fmHK0dZFNjTKlwN9wY82OjTE6ApG0zReOgLeWY"
+                "auth-token" : localStorage.getItem('token')
             },
         });
             const json =  await response.json(); 
@@ -33,7 +33,7 @@ const NoteState = (props)=>{
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhYzU1NGQxZTAyNTljZTE1ODcwMzc1In0sImlhdCI6MTY3MjIzODQxM30.-0gG-fmHK0dZFNjTKlwN9wY82OjTE6ApG0zReOgLeWY"
+                "auth-token" : localStorage.getItem('token') // storing in this computer
             },
             body: JSON.stringify({title , description , tag}) // body data type must match "Content-Type" header
         });
@@ -50,7 +50,7 @@ const NoteState = (props)=>{
             method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhYzU1NGQxZTAyNTljZTE1ODcwMzc1In0sImlhdCI6MTY3MjIzODQxM30.-0gG-fmHK0dZFNjTKlwN9wY82OjTE6ApG0zReOgLeWY"
+                "auth-token" : localStorage.getItem('token')
             },
         });
             const json =  await response.json(); 
@@ -70,7 +70,7 @@ const NoteState = (props)=>{
             method: 'PUT', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNhYzU1NGQxZTAyNTljZTE1ODcwMzc1In0sImlhdCI6MTY3MjIzODQxM30.-0gG-fmHK0dZFNjTKlwN9wY82OjTE6ApG0zReOgLeWY"
+                "auth-token" : localStorage.getItem('token')
             },
             body: JSON.stringify({title , description , tag}) // body data type must match "Content-Type" header
         });

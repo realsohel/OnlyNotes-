@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Login = (props) => {
 
@@ -23,7 +23,7 @@ const Login = (props) => {
             if(json.success){
                 //redirect
                 localStorage.setItem('token' , json.authtoken);
-                props.showAlert("Logged in Successfully." , "success:");
+                props.showAlert("Logged in Successfully." , "success");
                 history("/home");
 
             }
@@ -39,22 +39,27 @@ const Login = (props) => {
 
 
     return (
-        <div className='container justify-center'>
-            <h1 className='d-flex justify-content-center'> Login </h1>
+        <div className={`container justify-center border border-${props.mode} bg-${props.mode==='dark'?'#171717':'light'} text-${props.text}`}>
+            <h1 className='d-flex justify-content-center my-3'> Login </h1>
 
             <form className='container  justify-content-center' onSubmit={handlesubmit}>
                 <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" value={credentials.email} onChange={onChange}/>
+                    <label htmlFor="email" className="form-label"><b>Email address</b></label>
+                    <input type="email" className={`form-control bg-${props.mode} text-${props.text} `} id="email" name="email" aria-describedby="emailHelp" value={credentials.email} onChange={onChange}/>
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" value={credentials.password} onChange={onChange}/>
+                    <label htmlFor="password" className="form-label"><b>Password</b></label>
+                    <input type="password" className={`form-control bg-${props.mode} text-${props.text} `} id="password" name="password" value={credentials.password} onChange={onChange}/>
+                    <div id="emailHelp" className="form-text">Enter the correct password.</div>
                 </div>
                 
                 <div className="container d-flex justify-content-center my-4">
-                <button type="submit " className="btn btn-primary " >Submit</button>
+                <button type="submit " className="btn btn-primary " >Login</button>
+                </div>
+                <div className="container d-flex justify-content-center my-4">
+                <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/signup"
+                className="link-danger">SignUp</Link></p>
                 </div>
             </form>
         </div>

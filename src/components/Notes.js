@@ -1,4 +1,5 @@
 import React, { useContext, useEffect , useRef , useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import notecontext from '../context/notes/notecontext'
 import AddNote from './AddNote';
 import NoteItem from './NoteItem';
@@ -10,9 +11,16 @@ const Notes = (props) => {
     const ref = useRef(null);
     const refClose = useRef(null);
     const[note , setNote] = useState({ id:"", etitle: "", edescription: "", etag:""})
+    let history = useNavigate();
 
         useEffect(()=>{
-            fetchnotes();
+            if(localStorage.getItem('token')){
+                fetchnotes();
+            }
+            else{
+                props.showAlert("Login/SignUp before visiting to Home page" , 'warning')
+                history("/login");
+            }
             // eslint-disable-next-line
         },[])
 
@@ -28,7 +36,7 @@ const Notes = (props) => {
 
             e.preventDefault();
             editNote(note.id , note.etitle , note.edescription , note.etag);
-            props.showAlert("Note updated  Successfully." , "success:");
+            props.showAlert("Note updated  Successfully." , "success");
             refClose.current.click()
             
     }
