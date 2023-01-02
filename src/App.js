@@ -12,6 +12,10 @@ import NoteState from './context/notes/NoteState';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Alert from './components/Alert';
+import Notedetails from './components/Notedetails';
+import LandingPage from './components/LandingPage';
+import Footer from './components/Footer';
+
 
 function App() {
   const [mode , setmode] = useState('light');
@@ -55,12 +59,17 @@ function App() {
       
       <div className="container my-3">
       <Routes>
+        
+        <Route  exact path = "/" element={<LandingPage mode={mode} text={textmode}/>}/> 
         <Route  exact path = "/home" element={<Home mode={mode} text={textmode} showAlert={showAlert}/>}/> 
-        <Route  exact path = "/about" element={<About/>}/> 
+        <Route  exact path = "/about" element={<About mode={mode} text={textmode}/>}/> 
         <Route  exact path = "/login" element={<Login showAlert={showAlert} mode={mode} text={textmode}/>}/> 
         <Route  exact path = "/signup" element={<SignUp showAlert={showAlert} mode={mode} text={textmode}/>}/> 
+        <Route  exact path = "/newsdetails/:id" element={<Notedetails showAlert={showAlert} mode={mode} text={textmode}/>}/> 
       </Routes>
       </div>
+      
+      <Footer/>
 
       </BrowserRouter>
     </NoteState>

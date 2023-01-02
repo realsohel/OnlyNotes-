@@ -63,7 +63,7 @@ const SignUp = (props) => {
                 </div>
                 
                 <div className="container d-flex justify-content-center my-4">
-                <button type="submit " disabled={credentials.password!==credentials.cpassword} className="btn btn-primary " >SignUp</button>
+                <button type="submit " disabled={credentials.password!==credentials.cpassword} className="btn btn-primary container d-flex justify-content-center my-4 mt-5" >SignUp</button>
                 </div>
                 <div className="container d-flex justify-content-center my-4">
                 <p className="small fw-bold mt-2 pt-1 mb-0">Already have an account? <Link to="/login"

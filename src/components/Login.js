@@ -55,7 +55,7 @@ const Login = (props) => {
                 </div>
                 
                 <div className="container d-flex justify-content-center my-4">
-                <button type="submit " className="btn btn-primary " >Login</button>
+                <button type="submit " className="btn btn-primary container d-flex justify-content-center my-4 mt-5 " >Login</button>
                 </div>
                 <div className="container d-flex justify-content-center my-4">
                 <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/signup"
