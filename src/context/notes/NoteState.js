@@ -7,7 +7,9 @@ const NoteState = (props)=>{
     const host="http://localhost:5000" 
 
     const initialnotes = []// hardcoring API 
-    const[notes , setnotes] = useState(initialnotes); 
+    const[notes , setnotes] = useState(initialnotes);     
+    // const [gettingnote , setgettingnote] = useState({title:"" , description:"" , tag:""});
+    const [gettingnote , setgettingnote] = useState(initialnotes);
 
     // Fetch all  Notes.
     const fetchnotes = async()=>{
@@ -20,8 +22,9 @@ const NoteState = (props)=>{
             },
         });
             const json =  await response.json(); 
-            console.log(json);
+            console.log("data:" , json);
             setnotes(json);
+            console.log("notes p: ", );
 
     }
 
@@ -90,11 +93,27 @@ const NoteState = (props)=>{
         }
         setnotes(newNote);
     }
+
+    // Fetch all  Notes.
+    const getnote = async(id)=>{
+        // API call will be done here later. 
+        const response = await fetch(`${host}/api/notes/getnote/${id}`, {
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
+            headers: {
+                'Content-Type': 'application/json',
+                "auth-token" : localStorage.getItem('token')
+            },
+        });
+            const json =  await response.json(); 
+            console.log("data:" , json);
+            setgettingnote(json);
+
+    }
     
 
     
     return(
-        <Notecontext.Provider value={{notes , addNote, deleteNote , editNote, fetchnotes}} >
+        <Notecontext.Provider value={{notes , addNote, deleteNote , editNote, fetchnotes , getnote , gettingnote}} >
             {props.children}
         </Notecontext.Provider>
 

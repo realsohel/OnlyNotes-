@@ -121,7 +121,22 @@ router.delete('/deletenote/:id' ,fetchuser, async (req,res)=>{
         console.error(error.message);
         res.status(500).send("Internal server error");
     }
-
 })
+
+    // 4. Read Note 
+    // Route 5: get an existing note 
+
+    router.get('/getnote/:id' ,fetchuser, async (req,res)=>{
+        try {
+            const notes = await Notes.findById( req.params.id) // user: req.user.id
+            console.log(notes);
+            res.json(notes);
+        }
+        catch(error){
+            console.error(error.message);
+            res.status(500).send("Internal server error");
+        }
+    })
+
 
 module.exports =router;

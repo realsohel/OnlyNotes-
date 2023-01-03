@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function NoteItem(props) {
 
     const context = useContext(notecontext); // using context
-    const{deleteNote} = context; // detruxting notes = notes(from note.js) & setnote = setnote(from note.js)
+    const{deleteNote , getnote} = context; // detruxting notes = notes(from note.js) & setnote = setnote(from note.js)
     
     const {note , updateNote ,title, description} = props;
 
@@ -18,24 +18,24 @@ function NoteItem(props) {
         }
     }
 
-    // function convertToSlug(text){
-    //     return text.toLowerCase().replace(/[^\w-]+/g, '');
-    // }
+    const capitalizeFirstLetter=(string) =>{
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     return (
         <div className={`col-md-3 my-3 text-${props.text} `}>
             <div className="card " >
                 <div className={`card-body  bg-${props.mode}`}>
                     <div className={`d-flex align-items-center `}>
-                    <h5 className={`card-title text-${props.text} bg-${props.mode}`}>{title}</h5>
+                    <h5 className={`card-title text-${props.text} bg-${props.mode}`}>{capitalizeFirstLetter(title)}</h5>
                     <i className="fa-solid fa-trash-can mx-2" onClick={deletingnote}></i>
                     <i className="fa-solid fa-pen-to-square mx-2" onClick={()=>{updateNote(note) 
                         props.showAlert("Note updated  Successfully." , "success");}}></i>
                     </div>
-                    <p className={`card-text text-${props.text} bg-${props.mode}`}>{description} </p>
+                    <p className={`card-text text-${props.text} bg-${props.mode}`}>{capitalizeFirstLetter(description)} </p>
                     
                     
-                    <p className="text-muted mt-6">#{note.tag} </p>
-                    <Link className=' btn btn-primary' to={`/newsdetails/${note._id}`}>view more </Link>
+                    <p className="text-muted mt-6">#{capitalizeFirstLetter(note.tag)} </p>
+                    <Link className=' btn btn-primary' to={`/notedetails/${note._id}`}>view more </Link>
                     
                     {/* <div className="d-none"><Notedetails  title={note.title}/></div> */}
                 </div>
