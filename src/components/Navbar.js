@@ -1,5 +1,6 @@
 import React ,{useEffect} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import logoweb3_edit from "./logoweb3_edit.png"
 
 const Navbar = (props) => {
 
@@ -16,9 +17,9 @@ const Navbar = (props) => {
 
     return (
         <>
-        <nav className={`navbar fixed-top navbar-expand-lg navbar-light bg-${props.mode}`}>
+        <nav className={` web_navbar navbar fixed-top navbar-expand-lg navbar-light bg-${props.mode} `}>
             <div className="container-fluid">
-                <Link  className={`navbar-brand text-${props.text}`} to="/home">OnlyNotes</Link>
+                <Link  className={`logo navbar-brand text-${props.text}`}  to="/"><img src={logoweb3_edit} alt="abc"  style={{height:"50%" ,width:"150px"}}/></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -32,9 +33,9 @@ const Navbar = (props) => {
                         </li>
                     </ul>
                     <div className="form-check form-switch">
+                        <label className={`form-check-label text-${props.text}`} htmlFor="flexSwitchCheckDefault"><b> Dark-mode </b></label>
                         <input className="form-check-input" onClick={props.togglemode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                        <label className={`form-check-label text-${props.text}`} htmlFor="flexSwitchCheckDefault">Dark-mode</label>
-                    </div> 
+                        </div> 
 
                     {!localStorage.getItem('token') ?<form className="d-flex" role="search">
                         <Link className="btn btn-primary mx-2" type="submit" to="/login">Login</Link>

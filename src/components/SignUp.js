@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from "react-router-dom"
+import logoweb3_edit from "./logoweb3_edit.png"
 
 const SignUp = (props) => {
     const [credentials, Setcredentials] = useState({name: "" , email:"" , password:"" , cpassword:""});
@@ -38,6 +39,10 @@ const SignUp = (props) => {
 
 
     return (
+        <>
+        <div className='container d-flex justify-content-center mb-4 '>
+        <img src={logoweb3_edit} style={{width:"25%"}} alt="" />
+        </div>
         <div className={`container justify-center border border-${props.mode} bg-${props.mode==='dark'?'#171717':'light'} text-${props.text}`}>
             <h1 className='d-flex justify-content-center my-3'> SignUp </h1>
 
@@ -71,6 +76,7 @@ const SignUp = (props) => {
                 </div>
             </form>
         </div>
+    </>
     )
 }
 
