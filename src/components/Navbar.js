@@ -29,7 +29,7 @@ const Navbar = (props) => {
                             <Link className={`nav-link ${location.pathname==='/home'?"active":""} text-${props.text}`} aria-current="page" to="/home">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={`nav-link ${location.pathname==='/about'?"active":""} text-${props.text}`} to="/about">About</Link>
+                            <Link className={`nav-link ${location.pathname==='/about'?"active":""} text-${props.text}`} to="/about">About Us</Link>
                         </li>
                     </ul>
                     <div className="form-check form-switch">

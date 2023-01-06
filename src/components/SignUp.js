@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom"
 import logoweb3_edit from "./logoweb3_edit.png"
 
 const SignUp = (props) => {
+    document.title = 'OnlyNotes - SignUp'
     const [credentials, Setcredentials] = useState({name: "" , email:"" , password:"" , cpassword:""});
     let history = useNavigate()
 

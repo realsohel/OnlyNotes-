@@ -4,6 +4,7 @@ import logoweb3_edit from './logoweb3_edit.png'
 
 
 const LandingPage = (props) => {
+    document.title='OnlyNotes - Store your notes securely'
     let history = useNavigate();
     const handleLogout=()=>{
         localStorage.removeItem('token');

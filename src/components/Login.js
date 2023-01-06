@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import logoweb3_edit from './logoweb3_edit.png'
 
 const Login = (props) => {
-
+    
+    document.title = 'OnlyNotes - Login'
     const [credentials, Setcredentials] = useState({email:"" , password:""});
     let history = useNavigate()
 
